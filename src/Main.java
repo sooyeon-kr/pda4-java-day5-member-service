@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        UserService userService = new UserService();
+        while(true) {
+            System.out.println("1:회원가입 2:로그인 3:회원정보 수정 4:탈퇴 0:종료");
+            int inputValue = in.nextInt();
+            if(inputValue == 1) {
+                System.out.println("가입하실 아이디와 이름, 비밀번호를 (띄어쓰기로 구분하여) 입력하세요.");
+                String id = in.next();
+                String name = in.next();
+                String pw = in.next();
+                User user = new User(id, name, pw);
+                if(userService.join(user)) System.out.println(user.getName() + "님 가입을 환영합니다.");
+            }else if(inputValue == 2) {
+                System.out.println("로그인하실 아이디와 비밀번호를 (띄어쓰기로 구분하여) 입력하세요.");
+                String id = in.next();
+                String pw = in.next();
+                User user = new User(id, pw);
+                User logined = userService.login(user);
+                if(logined != null) {  System.out.println(logined.getName()+"님 로그인이 되었습니다."); }
+            }else if(inputValue == 3) {
+                break;
+            }else if(inputValue == 4) {
+                break;
+            }else if(inputValue == 0) {
+                break;
+            }else{
+                System.out.println("올바른 번호를 입력해주세요.");
+            }
+
+        }
+    }
+}
