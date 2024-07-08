@@ -29,7 +29,6 @@ public class Main {
                     System.out.println("사용자 아이디나 비밀번호를 확인해주세요.");
                 }
             }else if(inputValue == 3) {
-                break;
                 if(logined == null){
                     System.out.println("로그인한 상태가 아닙니다.");
                 }else{

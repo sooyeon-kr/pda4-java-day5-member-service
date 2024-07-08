@@ -11,4 +11,8 @@ public class UserService {
     public User modify(User user) {
         return userDao.update(user);
     }
+
+    public boolean withdraw(User user) {
+        return userDao.delete(user);
+    }
 }

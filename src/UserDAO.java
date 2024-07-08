@@ -42,4 +42,15 @@ public class UserDAO {
         return retUser;
     }
 
+    public boolean delete(User user) {
+        for(Map.Entry<Integer, User> entry : db.entrySet()) {
+            Integer id = entry.getKey();
+            User u = entry.getValue();
+            if(u.getId().equals(user.getId()) && u.getName().equals(user.getName())) {
+                db.remove(id);
+                return true;
+            }
+        }
+        return false;
+    }
 }
