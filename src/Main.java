@@ -44,7 +44,19 @@ public class Main {
                     }
                 }
             }else if(inputValue == 4) {
-                break;
+                if(logined == null){
+                    System.out.println("로그인한 상태가 아닙니다.");
+                }else{
+                    System.out.println("정말 탈퇴하시겠습니까? Y/N");
+                    String answer = in.next();
+                    if(!answer.equalsIgnoreCase("y")) continue;
+                    if(userService.withdraw(logined)) {
+                        System.out.println("성공적으로 탈퇴했습니다.");
+                        logined = null;
+                    }else{
+                        System.out.println("탈퇴처리를 실패했습니다.");
+                    }
+                }
             }else if(inputValue == 0) {
                 System.out.println("안녕히가세요!");
                 break;
