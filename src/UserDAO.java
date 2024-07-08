@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class UserDAO {
     private Map<Integer, User> db = new HashMap<Integer, User>();
+
     public UserDAO() {}
 
     public boolean save(User user) {
@@ -28,4 +29,17 @@ public class UserDAO {
         }
         return retUser;
     }
+
+    public User update(User user) {
+        User retUser = null;
+        for(User u : db.values()) {
+            if(u.getId().equals(user.getId()) && u.getName().equals(user.getName())) {
+                u.setPw(user.getPw());
+                retUser = new User(u.getId(), u.getName(), "");
+                return retUser;
+            }
+        }
+        return retUser;
+    }
+
 }
